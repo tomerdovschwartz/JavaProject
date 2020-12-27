@@ -26,7 +26,6 @@ public class Hanucka {
 	
 	private static ArrayList<Integer> orderIdealTime(ArrayList<Integer> arr)
 	{
-		
 		Collections.sort(arr);
 		for(int i= 0; i < (arr.size()-1); i++)
 		{
@@ -43,15 +42,15 @@ public class Hanucka {
 	{
 		Collections.sort(arr);
 		ArrayList<Integer> repeatMin = new ArrayList<Integer>();
-		int j=0;
+		int j=0,countMin;
 		for(int i= 0; i <size; i++)
 		{
 			repeatMin.add(1);
-			
+			countMin=1;
 			while((j+1)<arr.size() && arr.get(j) == arr.get(j+1))
 			{
 				j++;
-				repeatMin.set(repeatMin.size()-1, repeatMin.get(repeatMin.size()-1)+1);	
+				repeatMin.set(repeatMin.size()-1,++countMin);	
 			}
 			
 				j++;
@@ -64,7 +63,9 @@ public class Hanucka {
 	{
 		ArrayList<Integer> orderMin= new ArrayList<Integer>(idealTime);
 		orderIdealTime(orderMin);
-		ArrayList<Integer> repeatMin=repeatIdealTime(idealTime,n);
+		ArrayList<Integer> repeatMin=repeatIdealTime(idealTime,orderMin.size());
+		System.out.println(orderMin);
+		System.out.println(repeatMin);
 		int disguntlevel=0,dountin,min;
 		for(int i = 0; i < repeatMin.size(); i++)
 		{
