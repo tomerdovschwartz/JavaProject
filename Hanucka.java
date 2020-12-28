@@ -7,35 +7,30 @@ public class Hanucka {
 	public static void main(String[] args)
 	{
 		ArrayList<Integer> arr = new ArrayList<Integer>();
-		arr.add(5);
-		arr.add(1);
-	//	arr.add(2);
-	//	arr.add(2);
-		arr.add(2);
-		arr.add(2);
-		//arr.add(2);
-	//	arr.add(3);
-		//arr.add(3);
-	//	arr.add(3);
-	//	arr.add(3);
-		//arr.add(7);
-		//arr.add(7);
 		
+		arr.add(4);
+		arr.add(2);
+		arr.add(4);
+		arr.add(4);
+		arr.add(5);
+		arr.add(2);
+	
+		
+
 		System.out.println(DisguntLevel(arr,arr.size()));
 	}
 	
-	private static ArrayList<Integer> orderIdealTime(ArrayList<Integer> arr)
+	private static void orderIdealTime(ArrayList<Integer> arr)
 	{
-		Collections.sort(arr);
 		for(int i= 0; i < (arr.size()-1); i++)
 		{
 			if((i+1) < arr.size() && arr.get(i) == arr.get(i+1))
 			{
 				arr.remove(i+1);
 				orderIdealTime(arr);
-			}
+			}  
 		}
-		return arr;
+		return;
 	}
 	
 	private static ArrayList<Integer> repeatIdealTime(ArrayList<Integer> arr,int size)
@@ -62,14 +57,13 @@ public class Hanucka {
 	private static int DisguntLevel(ArrayList<Integer> idealTime, int n)
 	{
 		ArrayList<Integer> orderMin= new ArrayList<Integer>(idealTime);
+		Collections.sort(orderMin);
 		orderIdealTime(orderMin);
 		ArrayList<Integer> repeatMin=repeatIdealTime(idealTime,orderMin.size());
-		System.out.println(orderMin);
-		System.out.println(repeatMin);
+
 		int disguntlevel=0,dountin,min;
 		for(int i = 0; i < repeatMin.size(); i++)
 		{
-			
 			dountin=1;
 			min=-1;
 
